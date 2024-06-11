@@ -6,8 +6,12 @@ const getToken = async (): Promise<{ csrfToken: string }> => {
 }
 
 const Login = async () => {
-  const token = await getToken()
-  return <LoginForm csrfToken={token.csrfToken} />
+  try {
+    const token = await getToken()
+    return <LoginForm csrfToken={token.csrfToken} />
+  } catch (e) {
+    return <div></div>
+  }
 }
 
 export default Login

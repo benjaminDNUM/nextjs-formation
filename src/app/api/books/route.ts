@@ -4,11 +4,11 @@ import { Book } from '@/types'
 
 export const GET = async (req: NextRequest) => {
   const connection = await createConnection()
-  connection.connect()
+  await connection.connect()
   const response = await executeQuery<{ books: Book[] }, undefined>(
     connection,
     'select * from Books'
   )
-  connection.end()
+  await connection.end()
   return NextResponse.json(response, { status: 200 })
 }

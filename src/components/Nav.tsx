@@ -7,7 +7,7 @@ import { signOutUser } from '@/action/signOut'
 import { redirect, useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
-export default () => {
+const Nav = () => {
   const sessions = useSession()
   const router = useRouter()
 
@@ -55,3 +55,5 @@ export default () => {
     </menu>
   )
 }
+
+export default Nav

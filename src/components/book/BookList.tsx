@@ -5,7 +5,7 @@ import { Book } from '@/types'
 import { useSession } from 'next-auth/react'
 
 type BookListProps = { books: Book[] }
-export default ({ books }: BookListProps) => {
+const BookList = ({ books }: BookListProps) => {
   const session = useSession()
 
   return (
@@ -21,3 +21,5 @@ export default ({ books }: BookListProps) => {
     </>
   )
 }
+
+export default BookList

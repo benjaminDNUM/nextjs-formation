@@ -7,7 +7,7 @@ type FormState = { errors?: Record<string, string>; message?: string }
 
 const initialState: FormState = {}
 
-export default () => {
+const AddBooks = () => {
   const [state, formAction] = useFormState(insertBook, initialState)
 
   return (
@@ -37,3 +37,5 @@ export default () => {
     </form>
   )
 }
+
+export default AddBooks

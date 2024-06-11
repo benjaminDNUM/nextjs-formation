@@ -27,7 +27,7 @@ export default async (_prevState: unknown, formData: FormData) => {
 
   const connection = await createConnection()
   try {
-    connection.connect()
+    await connection.connect()
     const response = await executeQuery(
       connection,
       'insert into Books set ?',
@@ -37,6 +37,6 @@ export default async (_prevState: unknown, formData: FormData) => {
   } catch (e) {
     return { errors: 'Oups' }
   } finally {
-    connection.end()
+    await connection.end()
   }
 }

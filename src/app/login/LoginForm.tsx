@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation'
 type Props = {
   csrfToken: string
 }
-export default ({ csrfToken }: Props) => {
+const LoginForm = ({ csrfToken }: Props) => {
   const [state, formAction] = useFormState(signinUser, {
     shouldRedirect: false,
     message: '',
@@ -16,9 +16,9 @@ export default ({ csrfToken }: Props) => {
   const router = useRouter()
 
   useEffect(() => {
-    console.log("je passe la")
+    console.log('je passe la')
     if (state.shouldRedirect) {
-      console.log("je passe ici")
+      console.log('je passe ici')
       router.push('/')
     }
   }, [state.shouldRedirect])
@@ -46,3 +46,5 @@ export default ({ csrfToken }: Props) => {
     </form>
   )
 }
+
+export default LoginForm

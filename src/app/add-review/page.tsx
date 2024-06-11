@@ -13,7 +13,7 @@ const formSchema = z.object({
     .min(1, { message: 'La review doit faire au moins 1 charactère' }),
 })
 
-export default () => {
+const AddReview = () => {
   const { handleSubmit, register, formState } = useForm<
     z.infer<typeof formSchema>
   >({
@@ -64,3 +64,5 @@ export default () => {
     </form>
   )
 }
+
+export default AddReview

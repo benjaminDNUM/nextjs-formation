@@ -4,7 +4,7 @@ type BookProps = {
   book: Book
 }
 
-export default ({ book }: BookProps) => {
+const BookCard = ({ book }: BookProps) => {
   return (
     <div
       key={book.id}
@@ -15,3 +15,5 @@ export default ({ book }: BookProps) => {
     </div>
   )
 }
+
+export default BookCard

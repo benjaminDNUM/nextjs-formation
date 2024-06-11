@@ -6,6 +6,7 @@ const getBooks = async (): Promise<Book[]> => {
     headers: { 'Content-Type': 'application/json' },
     cache: 'no-cache',
   })
+  console.log('tutututuu', books, process.env.NEXT_PUBLIC_API_BASE)
   return await books.json()
 }
 export default async function Home() {

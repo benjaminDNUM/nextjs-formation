@@ -6,7 +6,7 @@ const getBooks = async (): Promise<Book[]> => {
     headers: { 'Content-Type': 'application/json' },
     cache: 'no-cache',
   })
-  console.log('log pour la prod', books.json())
+  console.log('log pour la prod', await books.json())
   return await books.json()
 }
 export default async function Home() {

@@ -12,9 +12,13 @@ export const GET = async (
   const response = await executeQuery<{ books: Book[] }, {}>(
     connection,
     `
-        select *
+        select 
+            r.id as id,
+            r.text as text,
+            u.name as userName
         from Reviews r
         left join Books b on b.id = r.book_id
+        left join Users u on u.id = r.user_id
         where b.id = ?
       `,
     [params.bookId]

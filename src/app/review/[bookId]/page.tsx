@@ -3,15 +3,15 @@
 import { useParams, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { Review } from '@/types'
+import ReviewList from '@/app/review/[bookId]/ReviewList'
 
-const ReviewList = () => {
-  const { bookId } = useParams<{ bookId: string }>()
+const ReviewPage = () => {
+  const { bookId } = useParams()
   const router = useRouter()
   const [reviews, setReview] = useState<Review[] | null>()
 
   useEffect(() => {
     const getReviews = async () => {
-      console.log('itititititii')
       const result = await fetch(`/api/reviews/${bookId}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
@@ -23,16 +23,23 @@ const ReviewList = () => {
 
   return (
     <div className="flex flex-col gap-2">
-      <span>review {bookId}</span>
-      <pre>{reviews?.map((r) => r.text)}</pre>
-      <button
-        onClick={() => router.push(`/`)}
-        className="rounded bg-green-300 p-2 w-fit"
-      >
-        Back
-      </button>
+      {reviews && <ReviewList reviews={reviews}></ReviewList>}
+      <div className="flex w-full gap-2 justify-end">
+        <button
+          onClick={() => router.push(`/review/${bookId}/add`)}
+          className="rounded bg-green-300 p-2 w-fit"
+        >
+          Ajouter une review
+        </button>
+        <button
+          onClick={() => router.push(`/`)}
+          className="rounded bg-green-300 p-2 w-fit"
+        >
+          Back
+        </button>
+      </div>
     </div>
   )
 }
 
-export default ReviewList
+export default ReviewPage

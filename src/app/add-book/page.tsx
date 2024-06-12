@@ -31,7 +31,7 @@ const AddBooks = () => {
       </div>
       <div className="flex justify-end">
         <button type="submit" className="rounded bg-green-300 p-2 w-fit">
-          Soumettre la review
+          Ajouter le livre
         </button>
       </div>
     </form>

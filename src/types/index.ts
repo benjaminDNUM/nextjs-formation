@@ -17,4 +17,5 @@ export interface Review {
   text: string
   book_id: number
   user_id: number
+  userName?: string
 }

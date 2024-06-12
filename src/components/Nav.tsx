@@ -28,12 +28,6 @@ const Nav = () => {
         </Link>
       </li>
       <li className="flex items-center gap-2">
-        <Pen color="white" size={16} />
-        <Link href="/review" className="text-white">
-          Ajouter une review
-        </Link>
-      </li>
-      <li className="flex items-center gap-2">
         {sessions.status !== 'authenticated' ? (
           <>
             <Home color="white" size={16} />

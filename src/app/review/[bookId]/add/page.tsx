@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import clsx from 'clsx'
 import { toast } from 'react-toastify'
+import { useParams, useRouter } from 'next/navigation'
 
 const formSchema = z.object({
   text: z
@@ -20,14 +21,22 @@ const AddReview = () => {
     resolver: zodResolver(formSchema),
   })
 
+  const { bookId } = useParams()
+  const router = useRouter()
+
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       const result = await fetch('/api/reviews', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...values }),
+        body: JSON.stringify({ ...values, book_id: bookId }),
       })
-      toast('Well done !', { type: 'success' })
+      if (result.status === 200) {
+        toast('Well done !', { type: 'success' })
+        router.push(`/review/${bookId}`)
+      } else {
+        toast('Oups', { type: 'error' })
+      }
     } catch (e) {
       toast('Oups', { type: 'error' })
     }
@@ -56,7 +65,13 @@ const AddReview = () => {
         )}
       </div>
 
-      <div className="flex justify-end">
+      <div className="flex justify-end gap-2">
+        <button
+          onClick={() => router.push(`/review/${bookId}`)}
+          className="rounded bg-green-300 p-2 w-fit"
+        >
+          Revenir au review
+        </button>
         <button type="submit" className="rounded bg-green-300 p-2 w-fit">
           Soumettre la review
         </button>

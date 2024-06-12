@@ -29,7 +29,7 @@ const Nav = () => {
       </li>
       <li className="flex items-center gap-2">
         <Pen color="white" size={16} />
-        <Link href="/add-review" className="text-white">
+        <Link href="/review" className="text-white">
           Ajouter une review
         </Link>
       </li>

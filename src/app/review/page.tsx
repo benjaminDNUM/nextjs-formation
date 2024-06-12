@@ -25,7 +25,7 @@ const AddReview = () => {
       const result = await fetch('/api/reviews', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(values),
+        body: JSON.stringify({ ...values }),
       })
       toast('Well done !', { type: 'success' })
     } catch (e) {

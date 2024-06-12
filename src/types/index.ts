@@ -15,4 +15,6 @@ export interface Book {
 export interface Review {
   id: number
   text: string
+  book_id: number
+  user_id: number
 }

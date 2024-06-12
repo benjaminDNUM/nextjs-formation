@@ -19,3 +19,9 @@ export interface Review {
   user_id: number
   userName?: string
 }
+
+export interface ReviewLike {
+  id: number
+  review_id: number
+  user_id: number
+}

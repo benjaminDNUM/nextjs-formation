@@ -7,7 +7,7 @@ import Footer from '@/components/Footer'
 import clsx from 'clsx'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import {SessionProvider} from "next-auth/react";
+import { SessionProvider } from 'next-auth/react'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -27,10 +27,10 @@ export default function RootLayout({
         <SessionProvider>
           <ToastContainer />
 
-          <div className="bg-gray-400 flex flex-col">
+          <div className="bg-gray-400 flex flex-col min-h-screen ">
             <Header />
             <Nav />
-            <div className="h-full p-10">{children}</div>
+            <div className="flex-grow p-10">{children}</div>
             <Footer />
           </div>
         </SessionProvider>
